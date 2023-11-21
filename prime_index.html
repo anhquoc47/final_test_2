@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tổng các số nguyên tố trong khoảng a và b</title>
+ </head>
+<body>
+  <h1>Tổng các số nguyên tố trong khoảng a và b</title>
+
+  <script>
+    function showPrompt(message) {
+  const prompt = window.prompt(message);
+    if (prompt !== null) {
+        return prompt;
+      }
+      return "";
+    }
+
+    function getSumOfPrimes(a, b) {
+      let sum = 0;
+    for (let i = a; i <= b; i++) {
+    if (isPrime(i)) {
+          sum += i;
+        }
+      }
+     return sum;
+    }
+
+    function isPrime(n) {
+      if (n < 2) {
+       return false;
+      }
+    for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) {
+         return false;
+        }
+      }
+      return true;
+    }
+
+    function main() {
+      const a = showPrompt("Nhập a: ");
+      const b = showPrompt("Nhập b: ");
+
+      if (a === "" || b === "") {
+        alert("Vui lòng nhập cả a và b");
+        return;
+      }
+
+      const sum = getSumOfPrimes(parseInt(a), parseInt(b));
+
+      if (a > b) {
+        alert("a phải nhỏ hơn b");
+        return;
+      }
+
+      const result = document.createElement("p");
+      result.textContent = `Kết quả tổng các số nguyên tố trong khoảng ${a} và ${b} là: ${sum}`;
+      document.querySelector("h1").after(result);
+
+      const primes = [];
+      for (let i = a; i <= b; i++) {
+      if (isPrime(i)) {
+          primes.push(i);
+        }
+      }
+
+      const primeList = document.createElement("p");
+      let text = "Các số nguyên tố gồm:";
+     for (const prime of primes) {
+        text += prime + ", ";
+      }
+      primeList.textContent = text.slice(0, -2);
+      result.appendChild(primeList);
+   }
+
+    main();
+  </script>
+</body>
+</html>

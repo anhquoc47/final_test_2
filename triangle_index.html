@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>Vẽ hình tam giác</title>
+</head>
+<body>
+ <h1>Vẽ hình tam giác</h1>
+
+ <input type="number" id="height" placeholder="Nhập chiều cao (1-10)">
+  <button onclick="drawTriangle()">Vẽ</button>
+
+  <div id="triangle"></div>
+
+  <script>
+  function drawTriangle() {
+      
+   const height = document.getElementById("height").value;
+
+    
+  if (height < 1 || height > 10) {
+        alert("Chiều cao tam giác phải là số nguyên trong khoảng (1-10)");
+        return;
+      }
+
+      
+      numberOneTriangle(height);
+ }
+
+    function numberOneTriangle(height) {
+     
+      if (height < 1 || height > 10) {
+   console.error("Chiều cao tam giác phải là số nguyên trong khoảng (1-10)");
+        return;
+      }
+   
+   for (let i = 1; i <= height; i++) {
+        
+    for (let j = 1; j <= height - i; j++) {
+          document.getElementById("triangle").innerHTML += " ";
+        }
+
+for (let j = 1; j <= i; j++) {
+          document.getElementById("triangle").innerHTML += "*";
+        }
+
+ document.getElementById("triangle").innerHTML += "<br>";
+      }
+    }
+     </script>
+</body>
+</html>
